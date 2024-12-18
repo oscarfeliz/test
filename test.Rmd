@@ -11,6 +11,8 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# 1. Data Science
+
 ## Pregunta 1:
 
 **1.** Dado un registro de vehículos que circulan por una autopista,
@@ -49,3 +51,41 @@ grupos?
 *En este caso son datos inferenciales ya que a partir de unos datos
 iniciales de una serie de usuarios se trata de generalizar el
 comportamiento al resto de los usuarios.*
+
+## Pregunta 2
+
+Considera el siguiente escenario:
+
+Sabemos que un usuario de nuestra red empresarial ha estado usando esta
+para fines no relacionados con el trabajo, como por ejemplo tener un
+servicio web no autorizado abierto a la red (otros usuarios tienen
+servicios web activados y autorizados). No queremos tener que rastrear
+los puertos de cada PC, y sabemos que la actividad puede haber cesado.
+Pero podemos acceder a los registros de conexiones TCP de cada máquina
+de cada trabajador (hacia donde abre conexión un PC concreto). Sabemos
+que nuestros clientes se conectan desde lugares remotos de forma
+legítima, como parte de nuestro negocio, y que un trabajador puede haber
+habilitado temporalmente servicios de prueba. Nuestro objetivo es
+reducir lo posible la lista de posibles culpables, con tal de
+explicarles que por favor no expongan nuestros sistemas sin permiso de
+los operadores o la dirección.
+
+Explica con detalle cómo se podría proceder al análisis y resolución del
+problema mediante Data Science, indicando de donde se obtendrían los
+datos, qué tratamiento deberían recibir, qué preguntas hacerse para
+resolver el problema, qué datos y gráficos se obtendrían, y cómo se
+comunicarían estos.
+
+*Primero de todo haría una recopilación de todas las ip's de origen y
+descartamos a los usuarios que tienen autorización con el objetivo de
+quedarnos con las ip's que no tienen autorización.*
+
+*De las ip's no autorizadas analizaría a qué destinos se están
+conectando para identificar cuáles son los servicios no permitidos y
+también en qué rango de horas. De este modo tenemos relacionadas ip's no
+autorizadas que se conectan a destinos o servicios no permitos.*
+
+*Teniendo el rango de horas se pueden generar unas gráficas que muestren
+cuántas ip's de origen se conectan a servicios no autorizados y el
+número de conexiones por horas, comunicándolo de forma totalmente
+impersonal, ni siquiera por departamentos.*
