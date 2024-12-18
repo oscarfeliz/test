@@ -96,8 +96,10 @@ impersonal, ni siquiera por departamentos.*
 
 ```{r}
 library(readr)
-epa_http <- read_table("epa-http.csv", col_names = FALSE)
+epa_http <- suppressWarnings(read_table("epa-http.csv",col_names = FALSE))
+epa_http[] <- lapply(epa_http, function(x) gsub('"', '', x))
+epa_http$X6 <- as.factor(epa_http$X6)
+epa_http$X7 = as.factor(epa_http$X7)
 colnames(epa_http) <- c("IPs", "TimeStamp", "Tipo","URL","Protocolo","Código","Bytes")
-#epa_http$X6 <- as.factor(epa_http$X6)
-#epa_http$X7 = as.factor(epa_http$X7)
+head(epa_http)
 ```
